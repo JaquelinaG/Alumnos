@@ -1,0 +1,43 @@
+.contenido {
+  margin-top: 32px;
+  margin-left: 232px;
+  margin-right: 48px;
+
+  /* display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+        "grid-search-box     grid-alumno-edicion"
+        "grid-alumnos-lista  grid-alumno-edicion";
+  grid-gap: 32px;
+  align-items: start; */
+}
+
+@media (max-width: 600px) {
+  .contenido {
+    margin-top: 16px;
+    margin-left: 16px;
+    margin-right: 32px;
+
+    /* display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas: "grid-search-box"
+                         "grid-alumnos-lista"
+                         "grid-alumno-edicion"; */
+  }
+}
+
+.search-box {
+  grid-area: grid-search-box;
+}
+
+.alumnos-lista {
+  grid-area: grid-alumnos-lista;
+}
+
+.alumno-edicion {
+  grid-area: grid-alumno-edicion;
+}
+
+
+
+

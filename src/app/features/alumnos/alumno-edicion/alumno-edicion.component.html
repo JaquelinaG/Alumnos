@@ -1,0 +1,67 @@
+<mat-card *ngIf="alumno" class="formulario">
+
+  <form #f="ngForm">
+    <mat-form-field class="all-width">
+      <input matInput #nombre = ngModel
+            placeholder="Nombre"
+            name="nombre"
+            [ngModel]="alumno.nombre"
+            required
+      >
+      <mat-error *ngIf="nombre.invalid">Debe ingresar el nombre
+      </mat-error>
+
+    </mat-form-field>
+    <mat-form-field class="all-width">
+      <input matInput #apellido = ngModel
+            placeholder="Apellido"
+            name="apellido"
+            [ngModel]="alumno.apellido"
+            required
+      >
+      <mat-error *ngIf="apellido.invalid">Debe ingresar el apellido
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="all-width">
+      <mat-select placeholder="Perfil" [ngModel]="alumno.perfilID" name="perfil">
+        <mat-option *ngFor="let perfil of GetPerfiles()" [value]="perfil.id">
+        {{ perfil.descripcion }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-radio-group  [ngModel] = "alumno.sexoID" name="sexo">
+      <mat-radio-button class="all-width"
+            *ngFor="let sexo of GetSexos()"
+            [value] = "sexo.id">
+            {{sexo.descripcion}}<br/>
+      </mat-radio-button>
+    </mat-radio-group>
+
+    <br/><br/>
+    <mat-checkbox [ngModel]="alumno.activo" name="activo">
+        Activo
+    </mat-checkbox>
+
+    <div>
+        <br/><br>
+        <button mat-button class="btn btn-default"
+                (click) = "Regresar()">
+              Cancelar
+        </button>
+        <button mat-button color="primary"
+                [disabled]="f.invalid"
+                (click) = "Guardar(f.value)"
+                class="btn btn-primary">
+              Aceptar
+        </button>
+        </div>
+
+  </form>
+
+</mat-card>
+
+
+
+

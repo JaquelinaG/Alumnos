@@ -1,0 +1,60 @@
+<!-- <ul>
+  <li *ngFor="let alumno of alumnos">
+    <app-alumno-item
+      [alumno] = "alumno"
+      [seleccionado]="alumnoSeleccionado === alumno"
+      (seleccion)="seleccionarAlumno($event)"
+    ></app-alumno-item>
+  </li>
+</ul> -->
+
+<mat-table #table [dataSource]="dataSource" class="tabla mat-elevation-z8" >
+
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef> Id. </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="nombre">
+        <mat-header-cell *matHeaderCellDef> Nombre </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.nombre}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="apellido">
+        <mat-header-cell *matHeaderCellDef> Apellido </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.apellido}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="perfilID">
+        <mat-header-cell *matHeaderCellDef> Perfil </mat-header-cell>
+        <mat-cell *matCellDef="let element">{{perfilesListSrv.Descripcion(element.perfilID)}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="sexoID">
+        <mat-header-cell *matHeaderCellDef> Sexo </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{sexosListSrv.Descripcion(element.sexoID)}} </mat-cell>
+     </ng-container>
+
+      <ng-container matColumnDef="activo">
+          <mat-header-cell *matHeaderCellDef> Activo </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.activo}} </mat-cell>
+       </ng-container>
+
+      <ng-container matColumnDef="acciones">
+          <mat-header-cell *matHeaderCellDef></mat-header-cell>
+          <mat-cell *matCellDef="let element">
+            <button mat-button [matMenuTriggerFor]="menu" class="accion"><mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item (click)="editar(element.id)">Editar</button>
+              <button mat-menu-item (click)="eliminar(element.id)">Eliminar</button>
+              <button mat-menu-item>Cursos aprobados</button>
+              <button mat-menu-item>Asistencia</button>
+            </mat-menu>
+          </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+</mat-table>

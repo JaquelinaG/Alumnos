@@ -1,0 +1,10 @@
+:host {
+  padding:32px;
+  background-color:#fff;
+  border-radius:6px;
+}
+
+.all-width {
+  width:100%;
+  margin-bottom:0.5em;
+}

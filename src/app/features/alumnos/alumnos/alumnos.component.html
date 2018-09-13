@@ -1,0 +1,14 @@
+<app-search-box
+  class="search-box"
+  (Search)="filtrar($event)"
+></app-search-box>
+
+<app-alumnos-list
+  class="alumnos-lista"
+  [alumnos]="alumnos"
+  [alumnoSeleccionado]="alumnoSeleccionado"
+  (seleccionar)="seleccionarAlumno($event)"
+></app-alumnos-list>
+
+<button mat-fab class="add-button" (click)="agregar()">+</button>
+
